@@ -1,0 +1,215 @@
+/*
+Theme name: MiniMoo
+Theme URI: http://limetouch.com/archives/minimoo-minimalist-wordpress-theme
+Description: A clean looking lightweight 2 column theme based on MooTools 1.2 
+Tags: white, light, two-columns, fixed-width, right-sidebar, threaded-comments
+Author: Darran Low
+Version: 1.3.4
+*/
+
+body {font:67.5% Helvetica, Arial, Verdana, sans-serif; color:#000000; margin:0; padding:1em 5em 0 5em; background:#fff; width:78em; margin:0 auto;}
+
+pre {background-color:#F9F9F9;}  //modified by sandeep jain
+
+.aligncenter, div.aligncenter {display: block; margin-left: auto; margin-right: auto;}
+.alignleft {float: left; margin: 0 1em 0 0;}
+.alignright {float: right; margin: 0 0 0 1em;}
+.left {float: left; margin: 0 1em 0 0; width:48%; text-align:left;}
+.right {float: right; margin: 0 0 0 1em; width:48%; text-align:right;}
+.post-navi {margin-top:2em;}
+
+.wp-caption {border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding-top: 4px; margin: 10px;}
+.wp-caption img {margin: 0; padding: 0; border: 0 none;}
+.wp-caption p.wp-caption-text {font-size: 11px; line-height: 17px; padding: 0 4px 5px; margin: 0;}
+
+.clear {clear:both;}
+.red {color:#ff0000;}
+.term {font-style:italic; color:#7c7c7c;}
+.update {border:1px solid #e1e1e1; background:#f6f6f6; margin:1em 0; padding:0.8em;}
+
+a:link, a:active, a:visited {color:#006600; text-decoration:none;}
+a img {border:none;}
+a:hover{color:#ca7700;}
+
+h1, h2, h3, h4, h5, h6 {font-family:Georgia, "Times New Roman", Times, Helvetica, Arial, serif; font-weight:lighter; color: #575757; letter-spacing:-0.05em;}
+h1 {font-size:4em;}
+h2 {font-size:1.7em;}
+h3 {font-size:1.45em;}
+pre, code {font-size:1.1em;}
+form {margin:0; padding:0;}
+label {display:block;}
+small {font-size:1em;}
+
+#wrapper {width:78em;}
+.blog-info {float:left; width:56em;}
+h1.blog-title, h1.blog-title a:link, h1.blog-title a:visited, h1.blog-title a:active {margin:0; padding:0; color:#006600; line-height:0.8em;}
+h1.blog-title a:hover {color:#ca7700;}
+.blog-description {font-size:1.5em; font-weight:lighter; color: #575757; margin:0.4em 0 0.25em 1em;}
+div.search {float:right;}
+#searchform {float:right; margin:0; padding:0;} 
+#s {font:1.2em Helvetica, Arial, sans-serif; border:1px solid #e1e1e1; margin:2em 0 0.3em 0; padding:0.4em;}
+
+#menu {border-top:1px solid #c1e4fd; border-bottom:1px solid #c1e4fd; background:#ebf7ff; margin:0 0 0 0; width:100%; font-family:Arial, Helvetica, sans-serif;}
+#menu ul {margin:0; padding:0;}
+#menu ul li {float:left; list-style-type:none; margin:0; padding:0.7em 1em}
+#menu a:link, #menu a:active, #menu a:visited {font-size:1.2em; font-weight:bold; color:#25395f;}
+#menu a:hover {color:#ca7700;}
+.rssfeed {float:right; padding:0.7em 1em;}
+
+#content {width:52em; float:left;}
+.post-main {border-bottom: 1px solid #e1e1e1;}
+.post-info, .page-info {height:1%;}
+.page-info {font-size:1.1em;}
+.post-info h2.post-title, .page-info h2.page-title {color:#000000; margin-top:0;}
+.page-info h2.page-title {margin-bottom:0em;}
+.post-title-info {float:left; font-size:1.1em; width:440px;}
+.post-date {float:right; font-size:1.1em; padding-top:0.45em;}
+.location-msg {font-size:1.1em;}
+h2.new, .post h2 {color:#575757; font-weight:100; margin:0 auto 0.2em 0;}
+h2.new {margin:0 auto 1em 0;}
+
+.post-content, .page-content {font-size:1.2em; line-height:1.5em; text-align:left; padding:0.1em 0;}
+.post-content h3, .page-content h3 {color:#838383; border-bottom:1px solid #e1e1e1;}
+/* Changed on 6 June 2013
+.post-content ul, .page-content ul, .post-content ol, .page-content ol {font-size:0.95em;}
+.post-content ul, .page-content ul {padding:0; margin:0;}
+.post-content ul li, .page-content ul li {list-style-type:none;} */
+.post-content p.attachment a img {border:1px solid #e1e1e1; padding:2px;}
+.post-content img.noborder {border:none;}
+.post-content img.border {border:1px solid #e1e1e1;}
+.page-content ul.topics li a:link, .page-content ul.topics li a:active, .page-content ul.topics li a:visited,
+.page-content p.tagcloud a:link, .page-content p.tagcloud a:active, .page-content p.tagcloud a:visited {text-decoration:none;}
+.post-content blockquote {font-style:italic; color:#333333; font-size:1.2em;}
+
+.post-meta {font-size:1.1em; padding-top:0.3em;}
+.similarposth {font-size:1.1em;}
+.similarposth h3 {margin:0.5em 0 1em 0;}
+.similarposts {line-height:1.5em; padding-top:2em;}
+.similarposts ul {list-style-type:none; margin:0; padding:0;}
+.similarposts ul li a{font-size:1.1em;}
+
+.tags {font-size:1.1em; margin:0.5em 0 3em 0;}
+.page-navi {font-size:1.1em; padding:0.5em 0 1em 0;}
+.comments-navi {margin-top:2em;}
+
+.comments .list {font-size:11px;}
+ol.commentlist { list-style:none; margin:0; padding:0; text-indent:0;}
+ol.commentlist li { border:1px solid #e1e1e1; margin-top:20px; padding:10px 10px 0 55px; position:relative; background:#fff;}
+ol.commentlist li.alt { }
+ol.commentlist li.bypostauthor {background:#f6f6f6;}
+ol.commentlist li.byuser {}
+ol.commentlist li.comment-author-admin {}
+ol.commentlist li.comment { }
+ol.commentlist li div.comment-author { padding:0 170px 0 0; }
+ol.commentlist li div.vcard {}
+ol.commentlist li div.vcard cite.fn {font-weight:bold; font-style:normal;}
+ol.commentlist li div.vcard cite.fn a.url {}
+ol.commentlist li div.vcard cite.fn a.url:hover {}
+ol.commentlist li div.vcard img.avatar { border:1px solid #e9e9e9; padding:3px; background:#fff; left:8px; position:absolute; top:7px; }
+ol.commentlist li div.vcard img.avatar-32 {}
+ol.commentlist li div.vcard img.photo {}
+ol.commentlist li div.vcard span.says {}
+ol.commentlist li div.commentmetadata {}
+ol.commentlist li div.comment-meta {}
+ol.commentlist li div.comment-meta a {}
+ol.commentlist li div.comment-meta a:hover {}
+ol.commentlist li p {margin-bottom:0.8em; line-height:1.5em;}
+ol.commentlist li ul {margin:0 0 0 1em; padding:0; text-indent:0; }
+ol.commentlist li div.reply {text-align:right; padding:5px 0;}
+ol.commentlist li div.reply:hover {}
+ol.commentlist li div.reply a {}
+ol.commentlist li ul.children { list-style:none; margin:0; text-indent:0; }
+ol.commentlist li ul.children li {margin:10px 0;}
+ol.commentlist li ul.children li.alt {}
+ol.commentlist li ul.children li.bypostauthor {}
+ol.commentlist li ul.children li.byuser {}
+ol.commentlist li ul.children li.comment {}
+ol.commentlist li ul.children li.comment-author-admin {}
+ol.commentlist li ul.children li.depth-2 {  }
+ol.commentlist li ul.children li.depth-3 { }
+ol.commentlist li ul.children li.depth-4 {  }
+ol.commentlist li ul.children li.depth-5 {}
+ol.commentlist li ul.children li.odd {}
+ol.commentlist li.even {}
+ol.commentlist li.odd {}
+ol.commentlist li.parent { }
+ol.commentlist li.pingback { }
+ol.commentlist li.pingback.parent { }
+ol.commentlist li.pingback div.vcard { padding:0 170px 0 0; }
+ol.commentlist li.thread-alt { }
+ol.commentlist li.thread-even {}
+ol.commentlist li.thread-odd {}
+
+.comments .pings {font-size:1.1em; margin-bottom:1em;}
+.comments .pings ol#pinglist {margin:0; padding:0;}
+.comments .pings ol#pinglist li {list-style-type:none; line-height:1.5em;}
+
+.form, .contact {font-size:11px; margin:0 0 1em 0;}
+.contact {margin-top:2em;}
+.respond {padding-bottom:0;}
+.comments .form input#author, .comments .form input#email, .comments .form input#url, .comments .form input#comment, .comments .form textarea, input#cSubject, input#cName, input#cEmail, #cMsg {border:1px solid #e1e1e1; font-size:1.1em; padding:0.4em; margin:0.2em 0.5em 1em 0; width:40%;}
+.comments .form textarea, #cMsg {font-family:"Courier New", Courier, monospace; font-size:1.2em; width:90%;}
+.comments .form input#submit, input#searchbutton, input#cSubmit {font-weight:300; float:left; margin:0; font-size:1em; height:2.5em; line-height:0.9em; padding:0.5em 1em; border:1px solid #e1e1e1; background:#efefef;}
+.comments .form input#submit, input#cSubmit {float:none;}
+.comments .form input#submit {width:10em; margin:0.5em 0;}
+input#cSubmit {width:13em; margin:0 0 0 0;}
+
+#commentCount, .respond, .similarposth h3, .pings h3 {color:#575757; font-size:1.6em;}
+#commentCount {margin:1em 0;}
+
+#sidebar {float:left; width:21em; margin:0 0 0 2em; padding:0; font-size:1.1em;}
+#sidebar img {border:1px solid #e1e1e1; padding:3px;}
+#sidebar li {list-style-type:none; margin-bottom:3em;}
+#sidebar li h2 {color:#000000; font-weight:100; margin:0 auto 0.2em 0;}
+#sidebar li ul {margin:0; padding:0;}
+#sidebar li ul li {margin:0; border-bottom:1px dotted #e1e1e1; line-height:1.8em;}
+#sidebar li#flickrrss ul {margin-bottom:3em;}
+#sidebar li#flickrrss ul li {border-bottom:0px dotted #e1e1e1; display:inline; margin:0; padding:0;}
+#sidebar li#flickrrss ul li a img {border:5px solid #8ac285; margin:0 0.5em 0.5em 0; padding:1px;}
+#sidebar li#flickrrss ul li a:hover img {border:5px solid #c67721; padding:1px;}
+#sidebar li ul li ul li {margin: 0 0 0 1em; border-bottom:none;}
+#sidebar li ul li.recent-cmts {margin-top:0.7em; display:inline; border:none; margin-right:0.8em;}
+#sidebar li ul li.recent-cmts a img {border:3px solid #8ac285; padding:0;}
+#sidebar li ul li.recent-cmts a:hover img {border:3px solid #ca7700; padding:0;}
+
+#footer {background:#ebf7ff; border-top:1px solid #c1e4fd; border-bottom:1px solid #c1e4fd; margin-bottom:1em; font-family:Arial, Helvetica, sans-serif;}
+#footer a:link, #footer a:active, #footer a:visited {color:#25395f; font-weight:bold;}
+#footer a:hover {color:#ca7700;}
+div.xhtml {float:left; font-size:1.1em; padding:0.7em 1em;}
+div.credits {float:right; font-size:1.1em; padding:0.7em 1em;}
+
+#ajaxSpinner {position:absolute; top:0; left:0; width:32px; height:32px;}
+.ajax-loading {background:url(js/ajax-loader.gif) no-repeat center;}
+#postStatus, #cPostStatus {float:left; padding:0.25em; margin:0; width:32px; height:32px;}
+#cPostStatus {padding:0;}
+#commentStatus {float:left; padding-top:1.05em;}
+#msgStatus {float:left; padding:0.6em; color:#28ab3b;}
+
+#navmenu {margin:0 0 1em 0;}
+#navmenu li {display: inline; }
+
+#navmenu ul li a {text-decoration:none;  margin: 1px;
+	padding: 5px 10px 5px 10px;}
+
+.submit, .ajax {float:left;}
+.nav {
+	margin: 15px 0;
+	padding: 12px 0;
+}
+
+.nav span { font-weight: bold; }
+
+.nav span, .nav a { padding: 6px; }
+
+#bbpress-forums {
+	background: transparent;
+	clear: both;
+	margin-bottom: 20px;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+#bbpress-content {
+width: 100%;
+float: left;
+}
