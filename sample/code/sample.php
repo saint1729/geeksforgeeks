@@ -1,21 +1,36 @@
 <head>
-       <title>Add two numbers without using arithmetic operators - GeeksforGeeks</title>
-       <style type="text/css" media="screen">
-          @import url('http://d2o58evtke57tz.cloudfront.net/wp-content/themes/minimoo/style.css');
-    </style>
-      <link href="http://d2o58evtke57tz.cloudfront.net/wp-content/themes/minimoo/favicon.ico" rel="shortcut icon" />    
-    
-<!-- This site is optimized with the Yoast WordPress SEO plugin v2.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
-<link rel="canonical" href="http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Add two numbers without using arithmetic operators - GeeksforGeeks" />
-<meta property="og:description" content="Write a function Add() that returns sum of two integers. The function should not use any of the arithmetic operators (+, ++, &#8211;, -, .. etc). Sum of two bits can be obtained by performing XOR (^) of the two bits. Carry bit can be obtained by performing AND (&amp;) of two bits. Above is &hellip;" />
-<meta property="og:url" content="http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/" />
-<meta property="og:site_name" content="GeeksforGeeks" />
-<meta property="article:section" content="Bit Magic" />
-<meta property="article:published_time" content="2012-03-17T23:08:59+00:00" />
-<!-- / Yoast WordPress SEO plugin. -->
+
+<style type="text/css" media="screen">
+    @import url('http://d2o58evtke57tz.cloudfront.net/wp-content/themes/minimoo/style.css');
+</style>
+
+<style type="text/css" media="screen">
+
+    .post-content {
+        /*width: 500px;/**/
+        font-size: 200%;
+    }
+
+    .post-title {
+        /*width: 500px;
+        font-size: 200%;/**/
+    }
+
+    h1 {
+        font-size: 250%;
+    }
+
+    p.headings#topic {
+        font-size: 250%;
+        color: #006600;
+    }
+
+    p.headings#question {
+        font-size: 250%;
+        color: #006600;
+    }
+
+</style>
 
 <link rel='stylesheet' id='wp-quicklatex-format-css'  href='http://d2o58evtke57tz.cloudfront.net/wp-content/plugins/wp-quicklatex/css/quicklatex-format.css?ver=4.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='bbp-default-css'  href='http://d2o58evtke57tz.cloudfront.net/wp-content/plugins/bbpress/templates/default/css/bbpress.css?ver=2.5.6-5643' type='text/css' media='screen' />
@@ -59,6 +74,13 @@ bb2_addLoadEvent(function() {
 <body>
 <?php
 
+
+    set_time_limit(20000);
+    require_once 'htmlpurifier/library/HTMLPurifier.auto.php';
+
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+
     // Include the library
     include('simple_html_dom.php');
     
@@ -72,70 +94,222 @@ bb2_addLoadEvent(function() {
         ),
     );
 
-    //$cxContext = stream_context_create($aContext);
+    $cxContext = stream_context_create($aContext);
 
-    $cxContext = NULL;
+    //$cxContext = NULL;
 
-    // Retrieve the DOM from a given URL
-    $html = file_get_html('http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/', false, $cxContext);
+    //$url = "http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/";
+
+    //$topics = [["Bit Magic", "bit-magic"]];
+
+    //$topics = [["C C++", "c-puzzles"]];
+
+    $topics = [["Arrays", "c-arrays"], ["Bit Magic", "bit-magic"], ["C C++", "c-puzzles"], ["Articles", "articles"], ["GFacts", "gfact"], ["Linked List", "linked-list"], ["MCQ", "multiple-choice-question"], ["Misc", "c-programs"], ["Output", "program-output"], ["String", "c-strings"], ["Tree", "tree"], ["Graph", "graph"]];
     
-    //echo $html;
-    
-    // Find all "A" tags and print their HREFs
-    //foreach($html->find('a') as $e) 
-    //    echo $e->href . '<br>';
+    //$topics = [["Arrays", "c-arrays"]];
 
-    // Retrieve all images and print their SRCs
-    //foreach($html->find('img') as $e)
-    //    echo $e->src . '<br>';
+    $topicCode = NULL;
 
-    // Find all images, print their text with the "<>" included
-    //foreach($html->find('img') as $e)
-    //    echo $e->outertext . '<br>';
+    if(isset($_GET['topic'])) {
+        $topicCode = $_GET['topic'];
+    }
 
-    // Find the DIV tag with an id of "myId"
-    //foreach($html->find('div#myId') as $e)
-    //    echo $e->innertext . '<br>';
 
-    // Find all SPAN tags that have a class of "myClass"
-    //foreach($html->find('span.myClass') as $e)
-    //    echo $e->outertext . '<br>';
+    $id = 1;
+    $file = "log.txt";
 
-    // Find all TD tags with "align=center"
-    //foreach($html->find('td[align=center]') as $e)
-    //    echo $e->innertext . '<br>';
-        
-    // Extract all text from a given cell
-    //echo $html->find('td[align="center"]', 1)->plaintext.'<br><hr>';
-    
-    // Find the DIV tag with a class of "myClass"
-    //foreach($html->find('div.post-content') as $e)
-    //    echo $e->innertext . '<br>';
-    
+    $topic_headings = [];
+    $topic_codes = [];
 
-    foreach($html->find('div.post-title-info') as $e)
-        echo $e->innertext . '<br>';
-    
-    foreach($html->find('div.post-content') as $e)
-        $text = $e->outertext . '<br>';
-    
-    $arr = explode("<script async", $text);
+    foreach($topics as $topic) {
+        array_push($topic_codes, $topic[1]);
+        array_push($topic_headings, $topic[0]);
+    }
 
-    echo $arr[0];
-    
-    //echo "<div class=\"post-info\">";
+    if ($topicCode == NULL || !in_array($topicCode, $topic_codes)) {
+        echo "You should enter the url in the following form to get all questions of a particular topic.<br><br><i>http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic=<b>&lt;topic_name&gt;</b></i><br><br>";
+        echo "<i><b>topic_name</b></i> should be one among the following.<br>";
+        echo "<h2>Topic names:</h2>";
+        foreach($topic_codes as $topic_code) {
+            echo '<a href="http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic='. $topic_code . '">' . $topic_code . '</a><br>';
+        }
+    }
 
-    
-    //foreach($html->find('div.post-info') as $e) {
-    //    echo $e->innertext . '<br>';
-    //}
-    //echo "</div>";
-    
+    //foreach($topics as $topic) {
+    else {
+        $page = 20;
+        //echo $topicCode . "<br>";
+        //print_r($topic_codes);
+        //echo "<br>";
+        //echo array_search($topicCode, $topic_codes) . "<br>";
+        //echo $topic_headings[array_search($topicCode, $topic_codes)] . "<br>";
+        $topic = [$topic_headings[array_search($topicCode, $topic_codes)], $topicCode];
+        echo '<p class="headings" id="topic"><b>' . $topic[0] . '</b></p>' . '<br>';
+        while($page != 0) {
+            $url_topic = "http://www.geeksforgeeks.org/category/$topic[1]/page/$page/";
+
+            $handle_topic = curl_init();
+            curl_setopt($handle_topic, CURLOPT_URL, $url_topic);
+            
+            $proxy = '192.168.0.18:8080';
+            $proxyauth = 'INDIABLR\\blrbg:Altair123';
+
+            curl_setopt($handle_topic, CURLOPT_PROXY, $proxy);
+            curl_setopt($handle_topic, CURLOPT_PROXYUSERPWD, $proxyauth);
+            curl_setopt($handle_topic, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($handle_topic, CURLOPT_HEADER, TRUE);
+
+            /* Get the HTML or whatever is linked in $url. */
+            $response = curl_exec($handle_topic);
+
+            /* Check for 404 (file not found). */
+            $httpCode_topic = curl_getinfo($handle_topic, CURLINFO_HTTP_CODE);
+            //echo $httpCode . '<br>';
+            if($httpCode_topic == 200 || $httpCode_topic == 301) {
+                // Retrieve the DOM from a given URL
+                $html = file_get_html($url_topic, false, $cxContext);
+                
+                //echo $html;
+                
+                // Find all "A" tags and print their HREFs
+                //foreach($html->find('a') as $e) 
+                //    echo $e->href . '<br>';
+
+                // Retrieve all images and print their SRCs
+                //foreach($html->find('img') as $e)
+                //    echo $e->src . '<br>';
+
+                // Find all images, print their text with the "<>" included
+                //foreach($html->find('img') as $e)
+                //    echo $e->outertext . '<br>';
+
+                // Find the DIV tag with an id of "myId"
+                //foreach($html->find('div#myId') as $e)
+                //    echo $e->innertext . '<br>';
+
+                // Find all SPAN tags that have a class of "myClass"
+                //foreach($html->find('span.myClass') as $e)
+                //    echo $e->outertext . '<br>';
+
+                // Find all TD tags with "align=center"
+                //foreach($html->find('td[align=center]') as $e)
+                //    echo $e->innertext . '<br>';
+                    
+                // Extract all text from a given cell
+                //echo $html->find('td[align="center"]', 1)->plaintext.'<br><hr>';
+                
+                // Find the DIV tag with a class of "myClass"
+                //foreach($html->find('div.post-content') as $e)
+                //    echo $e->innertext . '<br>';
+                
+
+                //foreach($html->find('div.post-title-info') as $e)
+                //    echo $e->innertext . '<br>';
+                
+                //foreach($html->find('div.post-content') as $e)
+                //    $text = $e->outertext . '<br>';
+                
+
+                //$arr = explode("<script async", $text);
+
+                //echo $arr[0];
+
+
+                $urls = [];
+                foreach($html->find('h2.post-title') as $e) {
+                    $text = $e->innertext . '<br>';
+                    $arr = explode("\"", $text);
+                    array_unshift($urls, $arr[1]);
+                }
+                
+                //print_r($urls);
+                foreach($urls as $url) {
+                    //if($url != "http://www.geeksforgeeks.org/write-a-c-macro-printx-which-prints-x/") {
+                    //    continue;
+                    //}
+
+                    $handle = curl_init();
+                    curl_setopt($handle, CURLOPT_URL, $url);
+                    
+                    $proxy = '192.168.0.18:8080';
+                    $proxyauth = 'INDIABLR\\blrbg:Altair123';
+
+                    curl_setopt($handle, CURLOPT_PROXY, $proxy);
+                    curl_setopt($handle, CURLOPT_PROXYUSERPWD, $proxyauth);
+                    curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+                    curl_setopt($handle, CURLOPT_HEADER, TRUE);
+
+                    /* Get the HTML or whatever is linked in $url. */
+                    $response = curl_exec($handle);
+
+                    /* Check for 404 (file not found). */
+                    $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+                    //echo $httpCode . '<br>';
+
+                    if($httpCode == 200 || $httpCode == 301) {
+                        $postHtml = file_get_html($url, false, $cxContext);
+                        /*foreach($postHtml->find('div.post-title-info') as $e2) {
+                            $heading = $e2->outertext;
+                            $heading = $heading->find('h2.post-title');
+                            echo '<h2 class="post-title">' . $heading . '</h2><br>';
+                        }/**/
+                        //echo $postHtml;
+                        foreach($postHtml->find('h2.post-title') as $e2) {
+                            $heading = $id . '.&nbsp;&nbsp;' .$e2->innertext;
+                            echo '<p class="headings" id="question">' . $heading . '</p>';
+                            //echo '<p class="post-title">' . $heading . '</p>';
+                        }
+                        foreach($postHtml->find('div.post-content') as $e2) {
+                            $text = $e2->outertext . '<br>';
+                        }
+                        //$arr = explode("<em></p>" . (string)PHP_EOL . "\t\t" . (string)PHP_EOL . "&nbsp;" . (string)PHP_EOL . "&nbsp;" . (string)PHP_EOL . "<script async", $text);
+                        //echo htmlentities(substr($text, strpos($text, "<em></p>"), 27)); //strpos($text, "<em></p>")+26);
+                        //$arr = explode(htmlentities(substr($text, strpos($text, "<em></p>"), 27)), $text);
+                        //$arr = explode("&nbsp;<br>&nbsp;", $text);/**/
+                        //echo ($arr);
+                        //if($text == $arr[0]) {
+                            //$arr = explode("<script async", $text);
+                            //echo $arr[0];
+                        //}
+                        //else {
+                            //echo $arr[0];
+                        //}
+                        $arr = explode("<script async", $text);
+                        $clean_html = $purifier->purify($arr[0]);
+                        echo $clean_html;
+
+                        echo "</div>";
+                        
+                        echo "<br><br><br><br>";
+                        $id++;
+                    }
+                    curl_close($handle);
+                }/**/
+
+
+                //echo "<div class=\"post-info\">";
+
+                //foreach($html->find('div.post-info') as $e) {
+                //    echo $e->innertext . '<br>';
+                //}
+                //echo "</div>";
+            }
+            //else {
+            //    file_put_contents($file, "HTTP Code: " . $httpCode . "    " . $url . "\n");
+            //}
+
+            curl_close($handle_topic);
+
+            $page--;
+
+        }
+        //file_put_contents($file, "\n\n\n");
+    }
     
 ?>
 
 
-<div id="footer">
+<!--div id="footer">
 		
 		    <div class="xhtml">
                         @geeksforgeeks, <a href="http://creativecommons.org/licenses/by-nc-nd/2.5/in/deed.en_US" title="Valid XHTML Strict 1.0">Some rights reserved</a>  <a href="http://www.geeksforgeeks.org/about/contact-us/"> &nbsp; &nbsp; &nbsp; &nbsp;Contact Us!</a>
@@ -210,8 +384,6 @@ bb2_addLoadEvent(function() {
 	SyntaxHighlighter.all();
 </script>
 				  
-		</div> <!--end wrapper-->
-        <div id="ajaxSpinner"></div> <!--For AJAX spinner holder-->
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
