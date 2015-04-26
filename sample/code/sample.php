@@ -1,5 +1,7 @@
 <head>
 
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
 <style type="text/css" media="screen">
     @import url('http://d2o58evtke57tz.cloudfront.net/wp-content/themes/minimoo/style.css');
 </style>
@@ -94,9 +96,9 @@ bb2_addLoadEvent(function() {
         ),
     );
 
-    $cxContext = stream_context_create($aContext);
+    //$cxContext = stream_context_create($aContext);
 
-    //$cxContext = NULL;
+    $cxContext = NULL;
 
     //$url = "http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/";
 
@@ -131,7 +133,7 @@ bb2_addLoadEvent(function() {
         echo "<i><b>topic_name</b></i> should be one among the following.<br>";
         echo "<h2>Topic names:</h2>";
         foreach($topic_codes as $topic_code) {
-            echo '<a href="http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic='. $topic_code . '">' . $topic_code . '</a><br>';
+            echo '<a href="javascript:void(0)" onclick=window.open("http://localhost/geeksforgeeks/sample/code/sample.php?topic='. $topic_code . '")>' . $topic_code . '</a><br>';
         }
     }
 
@@ -154,8 +156,8 @@ bb2_addLoadEvent(function() {
             $proxy = '192.168.0.18:8080';
             $proxyauth = 'INDIABLR\\blrbg:Altair123';
 
-            curl_setopt($handle_topic, CURLOPT_PROXY, $proxy);
-            curl_setopt($handle_topic, CURLOPT_PROXYUSERPWD, $proxyauth);
+            //curl_setopt($handle_topic, CURLOPT_PROXY, $proxy);
+            //curl_setopt($handle_topic, CURLOPT_PROXYUSERPWD, $proxyauth);
             curl_setopt($handle_topic, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($handle_topic, CURLOPT_HEADER, TRUE);
 
@@ -234,8 +236,8 @@ bb2_addLoadEvent(function() {
                     $proxy = '192.168.0.18:8080';
                     $proxyauth = 'INDIABLR\\blrbg:Altair123';
 
-                    curl_setopt($handle, CURLOPT_PROXY, $proxy);
-                    curl_setopt($handle, CURLOPT_PROXYUSERPWD, $proxyauth);
+                    //curl_setopt($handle, CURLOPT_PROXY, $proxy);
+                    //curl_setopt($handle, CURLOPT_PROXYUSERPWD, $proxyauth);
                     curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
                     curl_setopt($handle, CURLOPT_HEADER, TRUE);
 
