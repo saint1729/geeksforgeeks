@@ -1,5 +1,7 @@
 <head>
 
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
 <style type="text/css" media="screen">
     @import url('http://d2o58evtke57tz.cloudfront.net/wp-content/themes/minimoo/style.css');
 </style>
@@ -72,8 +74,8 @@ bb2_addLoadEvent(function() {
 </head>
 
 <body>
-<?php
 
+<?php
 
     set_time_limit(20000);
     require_once 'htmlpurifier/library/HTMLPurifier.auto.php';
@@ -116,7 +118,6 @@ bb2_addLoadEvent(function() {
         $cat_or_tag = $_GET['cat_or_tag'];
     }
 
-
     $id = 1;
     $file = "log.txt";
 
@@ -129,22 +130,21 @@ bb2_addLoadEvent(function() {
     }
 
     if ($topicCode == NULL || $cat_or_tag == NULL || !in_array($topicCode, $topic_codes)) {
-        echo "You should enter the url in the following form to get all questions of a particular topic.<br><br><i>http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic=<b>&lt;topic_name&gt;&amp;cat_or_tag=&lt;category_or_tag&gt;</b></i><br><br>";
-        echo "<i><b>topic_name</b></i> should be one among the following.<br>";
+        //echo "You should enter the url in the following form to get all questions of a particular topic.<br><br><i>http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic=<b>&lt;topic_name&gt;&amp;cat_or_tag=&lt;category_or_tag&gt;</b></i><br><br>";
+        echo "Select one of the <b><i>topic_name</i></b> among the following to get all questions of that topic.<br>";
         echo "<h2>Topic names (Catergories):</h2>";
         $i = 0;
         foreach($topic_codes as $topic_code) {
-            echo '<a href="http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic='. $topic_code . '&cat_or_tag=category">' . $topic_code . '</a><br>';
+            echo '<a href="javascript:void(0)" onlcick=window.open("sample.php?topic='. $topic_code . '&cat_or_tag=category")>' . $topic_code . '</a><br>';
             if($i++ == 12) {
                 break;
             }
-            $i++;
         }
         echo "<h2>Topic names (Tags):</h2>";
         $i =0;
         foreach($topic_codes as $topic_code) {
             if($i++ > 12) {
-                echo '<a href="http://172.16.81.47/geeksforgeeks/sample/code/sample.php?topic='. $topic_code . '&cat_or_tag=tag">' . $topic_code . '</a><br>';
+                echo '<a href="javascript:void(0)" onlcick=window.open("sample.php?topic='. $topic_code . '&cat_or_tag=tag")>' . $topic_code . '</a><br>';
             }
         }
     }
@@ -152,6 +152,7 @@ bb2_addLoadEvent(function() {
     //foreach($topics as $topic) {
     else {
         $page = 50;
+
         //echo $topicCode . "<br>";
         //print_r($topic_codes);
         //echo "<br>";
@@ -160,8 +161,8 @@ bb2_addLoadEvent(function() {
         $topic = [$topic_headings[array_search($topicCode, $topic_codes)], $topicCode];
         echo '<p class="headings" id="topic"><b>' . $topic[0] . '</b></p>' . '<br>';
         while($page != 0) {
-            $url_topic = "http://www.geeksforgeeks.org/$cat_or_tag/$topic[1]/page/$page/";
 
+            $url_topic = "http://www.geeksforgeeks.org/$cat_or_tag/$topic[1]/page/$page/";
             $handle_topic = curl_init();
             curl_setopt($handle_topic, CURLOPT_URL, $url_topic);
             
