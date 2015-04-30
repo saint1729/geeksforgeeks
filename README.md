@@ -6,7 +6,9 @@ All the scraped content (till 04/29/15) for each topic is currently in their res
 
 If you want the latest content just download the repository and host it with *XAMPP* (place the `geeksforgeeks` directory in *XAMPP* `htdocs` folder).
 
-Oh wait! Small change in `index.php` contained in root folder needs to be made. If you are under a proxy, the settings need to be updated on lines `82, 83`. Else, just *comment* lines `82, 83, 95, 148, 149, 169, 170` **AND** *Uncomment* line `97`.
+Oh wait! Small change in `index.php` contained in root folder needs to be made. If you are under a proxy, the settings need to be updated on lines `82, 83`. Else, just *comment* lines `95, 148, 149, 169, 170` **AND** *Uncomment* line `97`.
+
+`chmod` the root directory (recursively) to `777`. (`chmod -R 777 .`)
 
 Now, Start your Apache server through *XAMPP* control panel and go to `http://localhost/geeksforgeeks/`,  which gives you links for html pages for each topic(for each category/tag), upon clicking which opens the content in html format.
 
