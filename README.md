@@ -4,7 +4,7 @@ All geeksforgeeks problems to pdf.
 
 All the scraped content (till 04/29/15) for each topic is currently in their respective `<topic_name>_a5.pdf` in root folder, where a_5 corresponds to the page size of the rendered content.
 
-If you want the latest content just download the repository and host it with xampp (place the `geeksforgeeks` directory in *XAMPP* `htdocs` folder).
+If you want the latest content just download the repository and host it with *XAMPP* (place the `geeksforgeeks` directory in *XAMPP* `htdocs` folder).
 
 Oh wait! Small change in `index.php` contained in root folder needs to be made. If you are under a proxy, the settings need to be updated on lines `82, 83`. Else, just *comment* lines `82, 83, 95, 148, 149, 169, 170` **AND** *Uncomment* line `97`.
 
