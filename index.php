@@ -86,7 +86,7 @@
         
         $aContext = array(
             'http' => array(
-                'proxy' => 'tcp://' . $proxy_with_port_without_protocol,
+                'proxy' => 'tcp://' . $proxyip_with_port_without_protocol,
                 'request_fulluri' => true,
                 'header' => "Proxy-Authorization: Basic $auth",
             ),
