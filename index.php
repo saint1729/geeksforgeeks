@@ -92,9 +92,9 @@
             ),
         );
 
-        //$cxContext = stream_context_create($aContext);
-
         $cxContext = NULL;
+
+        //$cxContext = stream_context_create($aContext);
     
         $topics = [["Arrays", "c-arrays"], ["Bit Magic", "bit-magic"], ["C C++", "c-puzzles"], ["Articles", "articles"], ["GFacts", "gfact"], ["Linked List", "linked-list"], ["MCQ", "multiple-choice-question"], ["Misc", "c-programs"], ["Output", "program-output"], ["String", "c-strings"], ["Tree", "tree"], ["Graph", "graph"], ["Interview Experiences", "interview-experiences"], ["Advance Data Structures", "advance-data-structures"], ["Dynamic Programming", "dynamic-programming"], ["Greedy Algorithm", "Greedy-Algorithm"], ["Backtracking", "backtracking"], ["Pattern Searching", "pattern-searching"], ["Divide & Conquer", "divide-and-conquer"], ["Mathematical Algorithms", "MathematicalAlgo"], ["Recursion", "recursion"], ["Geometric Algorithms", "geometric-algorithms"]];
         
