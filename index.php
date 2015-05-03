@@ -92,9 +92,9 @@
             ),
         );
 
-        $cxContext = stream_context_create($aContext);
+        //$cxContext = stream_context_create($aContext);
 
-        //$cxContext = NULL;
+        $cxContext = NULL;
     
         $topics = [["Arrays", "c-arrays"], ["Bit Magic", "bit-magic"], ["C C++", "c-puzzles"], ["Articles", "articles"], ["GFacts", "gfact"], ["Linked List", "linked-list"], ["MCQ", "multiple-choice-question"], ["Misc", "c-programs"], ["Output", "program-output"], ["String", "c-strings"], ["Tree", "tree"], ["Graph", "graph"], ["Interview Experiences", "interview-experiences"], ["Advance Data Structures", "advance-data-structures"], ["Dynamic Programming", "dynamic-programming"], ["Greedy Algorithm", "Greedy-Algorithm"], ["Backtracking", "backtracking"], ["Pattern Searching", "pattern-searching"], ["Divide & Conquer", "divide-and-conquer"], ["Mathematical Algorithms", "MathematicalAlgo"], ["Recursion", "recursion"], ["Geometric Algorithms", "geometric-algorithms"]];
         
@@ -142,18 +142,11 @@
             echo '<p class="headings" id="topic"><b>' . $topic[0] . '</b></p>' . '<br>';
             while($page != 0) {
     
-                $url_topic = "http://www.geeksforgeeks.org/$cat_or_tag/$topic[1]/page/$page/";
-                $handle_topic = curl_init();
-                curl_setopt($handle_topic, CURLOPT_URL, $url_topic);
-                curl_setopt($handle_topic, CURLOPT_PROXY, $proxyip_with_port_without_protocol);
-                curl_setopt($handle_topic, CURLOPT_PROXYUSERPWD, $proxyauth);
-                curl_setopt($handle_topic, CURLOPT_RETURNTRANSFER, TRUE);
-                curl_setopt($handle_topic, CURLOPT_HEADER, TRUE);
-                $response = curl_exec($handle_topic);
-                $httpCode_topic = curl_getinfo($handle_topic, CURLINFO_HTTP_CODE);
-
-                if($httpCode_topic == 200 || $httpCode_topic == 301) {
-                    $html = file_get_html($url_topic, false, $cxContext);
+                $topic_url = "http://www.geeksforgeeks.org/$cat_or_tag/$topic[1]/page/$page/";
+                $topic_response_httpCode = get_response_http_code($topic_url); //, $proxyip_with_port_without_protocol, $proxyAuth);
+                $topic_httpCode = $topic_response_httpCode[1];
+                if($topic_httpCode == 200 || $topic_httpCode == 301) {
+                    $html = $topic_response_httpCode[0]; //file_get_html($topic_url, false, $cxContext);
     
                     $urls = [];
                     foreach($html->find('h2.post-title') as $e) {
@@ -161,20 +154,12 @@
                         $arr = explode("\"", $text);
                         array_unshift($urls, $arr[1]);
                     }
-                    
+
                     foreach($urls as $url) {
-    
-                        $handle = curl_init();
-                        curl_setopt($handle, CURLOPT_URL, $url);
-                        curl_setopt($handle, CURLOPT_PROXY, $proxyip_with_port_without_protocol);
-                        curl_setopt($handle, CURLOPT_PROXYUSERPWD, $proxyauth);
-                        curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
-                        curl_setopt($handle, CURLOPT_HEADER, TRUE);
-                        $response = curl_exec($handle);
-                        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-    
-                        if($httpCode == 200 || $httpCode == 301) {
-                            $postHtml = file_get_html($url, false, $cxContext);
+                        $url_response_httpCode = get_response_http_code($url);//, $proxyip_with_port_without_protocol, $proxyAuth);
+                        $url_httpCode = $url_response_httpCode[1];
+                        if($url_httpCode == 200 || $url_httpCode == 301) {
+                            $postHtml = $url_response_httpCode[0]; //file_get_html($url, false, $cxContext);
                             foreach($postHtml->find('h2.post-title') as $e2) {
                                 $heading = $id . '.&nbsp;&nbsp;' .$e2->innertext;
                                 echo '<p class="headings" id="question">' . $heading . '</p>';
@@ -189,11 +174,8 @@
                             echo "<br><br><br><br>";
                             $id++;
                         }
-                        curl_close($handle);
                     }
                 }
-    
-                curl_close($handle_topic);
     
                 $page--;
     

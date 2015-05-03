@@ -21,7 +21,7 @@
     
     $pages = 20;
     
-    $page = 20;
+    $page = 2;
 
     $id = 1;
 
@@ -36,7 +36,10 @@
     /* Check for 404 (file not found). */
     $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
     if($httpCode == 404) {
-        echo "<h2>404 Error</h2>";
+        echo $response; //"<h2>404 Error</h2>";
+    }
+    else {
+        echo $response; //"<h2>No Error</h2>";
     }
 
     curl_close($handle);

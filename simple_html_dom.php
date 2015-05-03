@@ -84,6 +84,23 @@ function file_get_html($url, $use_include_path = false, $context=null, $offset =
     return $dom;
 }
 
+
+function get_response_http_code($url, $proxyip_with_port_without_protocol = '', $proxyAuth = '') {
+    $handle = curl_init();
+    curl_setopt($handle, CURLOPT_URL, $url);
+    //curl_setopt($handle, CURLOPT_PROXY, $proxyip_with_port_without_protocol);
+    //curl_setopt($handle, CURLOPT_PROXYUSERPWD, $proxyAuth);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($handle, CURLOPT_HEADER, TRUE);
+    $response = curl_exec($handle);
+    $dom = new simple_html_dom(null, TRUE, TRUE, DEFAULT_TARGET_CHARSET, FALSE, DEFAULT_BR_TEXT, DEFAULT_SPAN_TEXT);
+    $dom->load($response, TRUE, FALSE);
+    $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+    $response_httpCode = [$dom, $httpCode];
+    return $response_httpCode;
+}
+
+
 // get html dom from string
 function str_get_html($str, $lowercase=true, $forceTagsClosed=true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
 {
