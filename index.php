@@ -82,20 +82,6 @@
         $proxyip_with_port_without_protocol = '<proxy_ip>:<port>'; // ex: '192.168.0.1:8080'
         $proxyauth = '<domain_name>\\<username>:<password>'; // ex: 'fb\\sai:alpha'
 
-        $auth = base64_encode($proxyauth);
-        
-        $aContext = array(
-            'http' => array(
-                'proxy' => 'tcp://' . $proxyip_with_port_without_protocol,
-                'request_fulluri' => true,
-                'header' => "Proxy-Authorization: Basic $auth",
-            ),
-        );
-
-        $cxContext = NULL;
-
-        //$cxContext = stream_context_create($aContext);
-    
         $topics = [["Arrays", "c-arrays"], ["Bit Magic", "bit-magic"], ["C C++", "c-puzzles"], ["Articles", "articles"], ["GFacts", "gfact"], ["Linked List", "linked-list"], ["MCQ", "multiple-choice-question"], ["Misc", "c-programs"], ["Output", "program-output"], ["String", "c-strings"], ["Tree", "tree"], ["Graph", "graph"], ["Interview Experiences", "interview-experiences"], ["Advance Data Structures", "advance-data-structures"], ["Dynamic Programming", "dynamic-programming"], ["Greedy Algorithm", "Greedy-Algorithm"], ["Backtracking", "backtracking"], ["Pattern Searching", "pattern-searching"], ["Divide & Conquer", "divide-and-conquer"], ["Mathematical Algorithms", "MathematicalAlgo"], ["Recursion", "recursion"], ["Geometric Algorithms", "geometric-algorithms"]];
         
         $topicCode = NULL;
@@ -146,8 +132,7 @@
                 $topic_response_httpCode = get_response_http_code($topic_url); //, $proxyip_with_port_without_protocol, $proxyAuth);
                 $topic_httpCode = $topic_response_httpCode[1];
                 if($topic_httpCode == 200 || $topic_httpCode == 301) {
-                    $html = $topic_response_httpCode[0]; //file_get_html($topic_url, false, $cxContext);
-    
+                    $html = $topic_response_httpCode[0];
                     $urls = [];
                     foreach($html->find('h2.post-title') as $e) {
                         $text = $e->innertext . '<br>';
@@ -156,10 +141,10 @@
                     }
 
                     foreach($urls as $url) {
-                        $url_response_httpCode = get_response_http_code($url);//, $proxyip_with_port_without_protocol, $proxyAuth);
+                        $url_response_httpCode = get_response_http_code($url); //, $proxyip_with_port_without_protocol, $proxyAuth);
                         $url_httpCode = $url_response_httpCode[1];
                         if($url_httpCode == 200 || $url_httpCode == 301) {
-                            $postHtml = $url_response_httpCode[0]; //file_get_html($url, false, $cxContext);
+                            $postHtml = $url_response_httpCode[0];
                             foreach($postHtml->find('h2.post-title') as $e2) {
                                 $heading = $id . '.&nbsp;&nbsp;' .$e2->innertext;
                                 echo '<p class="headings" id="question">' . $heading . '</p>';
