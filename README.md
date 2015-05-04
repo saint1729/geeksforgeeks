@@ -6,7 +6,7 @@ All the scraped content (till 04/29/15) for each topic is currently in their res
 
 If you want the latest content just download the repository and host it with *XAMPP* (place the `geeksforgeeks` directory in *XAMPP* `htdocs` folder).
 
-Oh wait! Small change in `index.php` contained in root folder needs to be made. If you are under a proxy, the settings need to be updated on lines `82, 83, 97, 146, 159`. Else, just *comment* **unwanted part** of lines `146, 159`.
+Oh wait! Small change in `index.php` contained in root folder needs to be made. If you are under a proxy, the settings need to be updated on lines `82, 83, 132, 144`. Else, just *comment* **unwanted part** of lines `132, 144`.
 
 `chmod` the root directory (recursively) to `777`. (`chmod -R 777 .`)
 
